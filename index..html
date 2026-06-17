@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Street | Premium Culinary Experience</title>
+    <style>
+        /* PREMIUM CINEMATIC INTRO OVERLAY */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0204 0%, #050505 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Ambient 3D Depth Fog for Intro */
+        #intro-overlay::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0%, rgba(229, 9, 20, 0.05) 25%, transparent 50%, rgba(229, 9, 20, 0.05) 75%, transparent 100%);
+            animation: rotateFog 12s linear infinite;
+        }
+
+        @keyframes rotateFog {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Trailer Style Animated Letters */
+        .cinematic-title {
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .cinematic-title span {
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            opacity: 0;
+            transform: translateY(30px) scale(0.8);
+            filter: blur(10px);
+            animation: letterReveal 3.5s cubic-bezier(0.11, 0, 0, 1) forwards;
+        }
+
+        /* Individual letter stagger delays for fluid build-up */
+        .cinematic-title span:nth-child(1) { animation-delay: 0.1s; }
+        .cinematic-title span:nth-child(2) { animation-delay: 0.2s; }
+        .cinematic-title span:nth-child(3) { animation-delay: 0.3s; }
+        .cinematic-title span:nth-child(4) { animation-delay: 0.4s; }
+        .cinematic-title span:nth-child(5) { animation-delay: 0.5s; }
+        .cinematic-title span:nth-child(6) { animation-delay: 0.6s; }
+        .cinematic-title span:nth-child(7) { animation-delay: 0.8s; color: #e50914; text-shadow: 0 0 20px rgba(229,9,20,0.6); }
+        .cinematic-title span:nth-child(8) { animation-delay: 0.9s; }
+        .cinematic-title span:nth-child(9) { animation-delay: 1.0s; }
+        .cinematic-title span:nth-child(10) { animation-delay: 1.1s; }
+        .cinematic-title span:nth-child(11) { animation-delay: 1.2s; }
+        .cinematic-title span:nth-child(12) { animation-delay: 1.3s; }
+
+        @keyframes letterReveal {
+            0% { opacity: 0; transform: translateY(40px) scale(0.8); filter: blur(12px); }
+            35% { opacity: 1; transform: translateY(0) scale(1.05); filter: blur(0px); }
+            40% { transform: scale(1); }
+            80% { opacity: 1; transform: scale(1.02); filter: blur(0px); text-shadow: 0 0 30px rgba(255,255,255,0.4); }
+            100% { opacity: 0; transform: translateY(-20px) scale(1.1); filter: blur(8px); }
+        }
+
+        .cinematic-subtext {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: subtextFade 3.5s cubic-bezier(0.11, 0, 0, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes subtextFade {
+            0% { opacity: 0; transform: scale(0.95); letter-spacing: 2px; }
+            30% { opacity: 1; letter-spacing: 6px; }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: scale(1.05); }
+        }
+
+        /* INCREDIBLE MODERN BACKGROUND WITH 3D DEPTH MESH */
+        body {
+            background-color: #060608;
+            /* Interactive geometric neon space grid */
+            background-image: 
+                linear-gradient(rgba(229, 9, 20, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(229, 9, 20, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 50% 20%, #1a080a 0%, #060608 70%);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 50px 20px;
+            background: linear-gradient(rgba(6, 6, 8, 0.4), #060608), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background-attachment: fixed;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            letter-spacing: -2px;
+            color: #ffffff; 
+            text-transform: uppercase;
+            font-weight: 900;
+            margin: 0;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+        .highlight { 
+            color: #e50914; 
+            text-shadow: 0 0 30px rgba(229, 9, 20, 0.4);
+        }
+        .subtitle {
+            font-size: 1.4rem;
+            color: #b3b3b3;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .social-contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .contact-link:hover {
+            background-color: #e50914;
+            border-color: #e50914;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+        }
+        .contact-link span {
+            margin-right: 8px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            border-left: 5px solid #e50914;
+            padding-left: 15px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .menu-item {
+            background: linear-gradient(145deg, rgba(25, 25, 30, 0.75), rgba(15, 15, 18, 0.9));
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .menu-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(229, 9, 20, 0.3);
+            box-shadow: 0 15px 35px rgba(229, 9, 20, 0.15);
+        }
+        .menu-item.clicked-effect {
+            transform: scale(0.95);
+            background-color: #222;
+            border-color: #e50914;
+        }
+        .menu-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        .ethiopian-text {
+            color: #8a8a93;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        .price {
+            color: #e50914;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(229,9,20,0.2);
+        }
+        .custom-box {
+            background: rgba(20, 20, 25, 0.7);
+            border: 1px dashed rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+        }
+        .custom-box textarea {
+            width: 100%;
+            height: 90px;
+            background-color: #0b0b0d;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            resize: none;
+            box-sizing: border-box;
+            margin-top: 15px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .custom-box textarea:focus {
+            border-color: #e50914;
+            outline: none;
+        }
+        .sauce-card-box {
+            background: linear-gradient(135deg, #220508, #0f0204);
+            border: 2px dashed #e50914;
+            padding: 35px;
+            border-radius: 16px;
+            margin: 50px 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(229, 9, 20, 0.15);
+            transition: all 0.3s ease;
+        }
+        .sauce-card-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(229, 9, 20, 0.25);
+        }
+        .sauce-card-box.clicked-effect {
+            transform: scale(0.97);
+            border-style: solid;
+        }
+        .sauce-warning {
+            color: #ff3838;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255,56,56,0.4);
+        }
+        .order-box {
+            background: linear-gradient(180deg, #141418, #0b0b0d);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 16px;
+            margin-top: 40px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+        }
+        .checkout-step {
+            background-color: #060608;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .checkout-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            background-color: #141418;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 12px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: #e50914;
+            outline: none;
+        }
+        .radio-group {
+            margin-top: 20px;
+        }
+        .radio-option {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .radio-option input {
+            margin-right: 15px;
+            transform: scale(1.3);
+            accent-color: #e50914;
+        }
+        .bank-details {
+            background-color: rgba(229, 9, 20, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e50914;
+            margin: 20px 0;
+        }
+        .code-display {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #e50914;
+            text-align: center;
+            letter-spacing: 6px;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(229,9,20,0.4);
+        }
+        .delivery-notice {
+            color: #ffcc00;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+        .btn {
+            background-color: #e50914;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+        }
+        .btn:hover {
+            background-color: #ff141f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+        }
+        .btn-block {
+            width: 100%;
+        }
+        .btn-telegram {
+            background-color: #0088cc;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+        .btn-telegram:hover {
+            background-color: #0099e6;
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+        }
+        .cart-summary {
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 20px;
+        }
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            background-color: #060608;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ff3838;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 5px;
+            transition: transform 0.2s;
+        }
+        .delete-btn:hover {
+            color: #ff6666;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HIGH-END CINEMATIC INTRO -->
+    <div id="intro-overlay">
+        <div class="cinematic-title">
+            <span>F</span><span>O</span><span>O</span><span>D</span><span>I</span><span>E</span>
+            <span>S</span><span>T</span><span>R</span><span>E</span><span>E</span><span>T</span>
+        </div>
+        <div class="cinematic-subtext">Now Loading Experience</div>
+    </div>
+
+    <header>
+        <h1>Foodie <span class="highlight">Street</span></h1>
+        <p class="subtitle">With Foodie, you will never get hungry.</p>
+        
+        <div class="social-contact-bar">
+            <a href="tel:+251935277358" class="contact-link">
+                <span>📞</span> Call Us: +251 935 277 358
+            </a>
+            <a href="https://www.tiktok.com/@3wkc74" target="_blank" class="contact-link">
+                <span>🎵</span> TikTok: @3wkc74
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- BREAKFAST -->
+        <h2 class="section-title">🌅 Breakfast</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item-ful-special">
+                <div>
+                    <h3>Ful Special</h3>
+                    <div class="ethiopian-text">ፉል ስፔሻል</div>
+                </div>
+                <div>
+                    <p class="price">250 Br</p>
+                    <button class="btn" onclick="addToCart('Ful Special', 250, 'item-ful-special')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-ful-normal">
+                <div>
+                    <h3>Ful Normal</h3>
+                    <div class="ethiopian-text">ፉል መደበኛ</div>
+                </div>
+                <div>
+                    <p class="price">150 Br</p>
+                    <button class="btn" onclick="addToCart('Ful Normal', 150, 'item-ful-normal')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-eggs-toast">
+                <div>
+                    <h3>Eggs & Toast</h3>
+                    <div class="ethiopian-text">እንቁላል እና ቶስት</div>
+                </div>
+                <div>
+                    <p class="price">200 Br</p>
+                    <button class="btn" onclick="addToCart('Eggs & Toast', 200, 'item-eggs-toast')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-pastry">
+                <div>
+                    <h3>Pastry</h3>
+                    <div class="ethiopian-text">ፓስትሪ</div>
+                </div>
+                <div>
+                    <p class="price">20 Br</p>
+                    <button class="btn" onclick="addToCart('Pastry', 20, 'item-pastry')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-chechebsa">
+                <div>
+                    <h3>Chechebsa</h3>
+                    <div class="ethiopian-text">ጨጨብሳ</div>
+                </div>
+                <div>
+                    <p class="price">150 Br</p>
+                    <button class="btn" onclick="addToCart('Chechebsa', 150, 'item-chechebsa')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-pancakes">
+                <div>
+                    <h3>Pancakes</h3>
+                    <div class="ethiopian-text">ፓንኬክ</div>
+                </div>
+                <div>
+                    <p class="price">200 Br</p>
+                    <button class="btn" onclick="addToCart('Pancakes', 200, 'item-pancakes')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-cake-slice">
+                <div>
+                    <h3>Cake Slice</h3>
+                    <div class="ethiopian-text">ኬክ ቁራጭ</div>
+                </div>
+                <div>
+                    <p class="price">120 Br</p>
+                    <button class="btn" onclick="addToCart('Cake Slice', 120, 'item-cake-slice')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-tea">
+                <div>
+                    <h3>Tea</h3>
+                    <div class="ethiopian-text">ሻይ</div>
+                </div>
+                <div>
+                    <p class="price">40 Br</p>
+                    <button class="btn" onclick="addToCart('Tea', 40, 'item-tea')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-coffee">
+                <div>
+                    <h3>Coffee</h3>
+                    <div class="ethiopian-text">ቡና</div>
+                </div>
+                <div>
+                    <p class="price">70 Br</p>
+                    <button class="btn" onclick="addToCart('Coffee', 70, 'item-coffee')">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LUNCH -->
+        <h2 class="section-title">🍔 Lunch</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item-double-burger">
+                <div>
+                    <h3>Double Burger</h3>
+                    <div class="ethiopian-text">ድርብ በርገር</div>
+                </div>
+                <div>
+                    <p class="price">500 Br</p>
+                    <button class="btn" onclick="addToCart('Double Burger', 500, 'item-double-burger')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-beef-burger">
+                <div>
+                    <h3>Beef Burger</h3>
+                    <div class="ethiopian-text">የስጋ በርገር</div>
+                </div>
+                <div>
+                    <p class="price">350 Br</p>
+                    <button class="btn" onclick="addToCart('Beef Burger', 350, 'item-beef-burger')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-club-sandwich">
+                <div>
+                    <h3>Club Sandwich</h3>
+                    <div class="ethiopian-text">ክለብ ሳንድዊች</div>
+                </div>
+                <div>
+                    <p class="price">300 Br</p>
+                    <button class="btn" onclick="addToCart('Club Sandwich', 300, 'item-club-sandwich')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-shawarma-wrap">
+                <div>
+                    <h3>Shawarma Wrap</h3>
+                    <div class="ethiopian-text">ሻዋርማ ራፕ</div>
+                </div>
+                <div>
+                    <p class="price">450 Br</p>
+                    <button class="btn" onclick="addToCart('Shawarma Wrap', 450, 'item-shawarma-wrap')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-pasta-sugo">
+                <div>
+                    <h3>Pasta al Sugo</h3>
+                    <div class="ethiopian-text">ፓስታ በሱጎ</div>
+                </div>
+                <div>
+                    <p class="price">180 Br</p>
+                    <button class="btn" onclick="addToCart('Pasta al Sugo', 180, 'item-pasta-sugo')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-pasta-meat">
+                <div>
+                    <h3>Pasta with Meat Sauce</h3>
+                    <div class="ethiopian-text">ፓስታ በስጋ ሶስ</div>
+                </div>
+                <div>
+                    <p class="price">300 Br</p>
+                    <button class="btn" onclick="addToCart('Pasta with Meat Sauce', 300, 'item-pasta-meat')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-rice-chicken">
+                <div>
+                    <h3>Rice & Chicken</h3>
+                    <div class="ethiopian-text">ሩዝ እና ዶሮ</div>
+                </div>
+                <div>
+                    <p class="price">400 Br</p>
+                    <button class="btn" onclick="addToCart('Rice & Chicken', 400, 'item-rice-chicken')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-hulbet">
+                <div>
+                    <h3>Hulbet</h3>
+                    <div class="ethiopian-text">ሁልበት</div>
+                </div>
+                <div>
+                    <p class="price">200 Br</p>
+                    <button class="btn" onclick="addToCart('Hulbet', 200, 'item-hulbet')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-shiro">
+                <div>
+                    <h3>Shiro</h3>
+                    <div class="ethiopian-text">ሽሮ</div>
+                </div>
+                <div>
+                    <p class="price">180 Br</p>
+                    <button class="btn" onclick="addToCart('Shiro', 180, 'item-shiro')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-misir-wot">
+                <div>
+                    <h3>Misir Wot</h3>
+                    <div class="ethiopian-text">ምስር ወጥ</div>
+                </div>
+                <div>
+                    <p class="price">180 Br</p>
+                    <button class="btn" onclick="addToCart('Misir Wot', 180, 'item-misir-wot')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-firfir">
+                <div>
+                    <h3>Firfir</h3>
+                    <div class="ethiopian-text">ፍርፍር</div>
+                </div>
+                <div>
+                    <p class="price">180 Br</p>
+                    <button class="btn" onclick="addToCart('Firfir', 180, 'item-firfir')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-fries">
+                <div>
+                    <h3>French Fries</h3>
+                    <div class="ethiopian-text">ጥብስ ድንች</div>
+                </div>
+                <div>
+                    <p class="price">100 Br</p>
+                    <button class="btn" onclick="addToCart('French Fries', 100, 'item-fries')">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DINNER -->
+        <h2 class="section-title">🥩 Dinner</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item-grilled-chicken">
+                <div>
+                    <h3>Grilled Chicken</h3>
+                    <div class="ethiopian-text">የተጠበሰ ዶሮ</div>
+                </div>
+                <div>
+                    <p class="price">550 Br</p>
+                    <button class="btn" onclick="addToCart('Grilled Chicken', 550, 'item-grilled-chicken')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-steak">
+                <div>
+                    <h3>Beef Steak</h3>
+                    <div class="ethiopian-text">የበሬ ስቴክ</div>
+                </div>
+                <div>
+                    <p class="price">800 Br</p>
+                    <button class="btn" onclick="addToCart('Beef Steak', 800, 'item-steak')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-fish">
+                <div>
+                    <h3>Fish Fillet</h3>
+                    <div class="ethiopian-text">የዓሣ ፊሌት</div>
+                </div>
+                <div>
+                    <p class="price">350 Br</p>
+                    <button class="btn" onclick="addToCart('Fish Fillet', 350, 'item-fish')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-mixed-grill">
+                <div>
+                    <h3>Mixed Grill</h3>
+                    <div class="ethiopian-text">ድብልቅ ግሪል</div>
+                </div>
+                <div>
+                    <p class="price">450 Br</p>
+                    <button class="btn" onclick="addToCart('Mixed Grill', 450, 'item-mixed-grill')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-chicken-rice">
+                <div>
+                    <h3>Chicken Rice</h3>
+                    <div class="ethiopian-text">የዶሮ ሩዝ</div>
+                </div>
+                <div>
+                    <p class="price">400 Br</p>
+                    <button class="btn" onclick="addToCart('Chicken Rice', 400, 'item-chicken-rice')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-bolognese">
+                <div>
+                    <h3>Pasta Bolognese</h3>
+                    <div class="ethiopian-text">ቦሎኔዝ ፓስታ</div>
+                </div>
+                <div>
+                    <p class="price">200 Br</p>
+                    <button class="btn" onclick="addToCart('Pasta Bolognese', 200, 'item-bolognese')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-rice-beef">
+                <div>
+                    <h3>Rice with Beef</h3>
+                    <div class="ethiopian-text">ሩዝ በስጋ</div>
+                </div>
+                <div>
+                    <p class="price">360 Br</p>
+                    <button class="btn" onclick="addToCart('Rice with Beef', 360, 'item-rice-beef')">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAST BITES -->
+        <h2 class="section-title">🍰 Fast Bites</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item-baklava">
+                <div>
+                    <h3>Baklava</h3>
+                    <div class="ethiopian-text">ባክላቫ</div>
+                </div>
+                <div>
+                    <p class="price">50 Br</p>
+                    <button class="btn" onclick="addToCart('Baklava', 50, 'item-baklava')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-sambusa">
+                <div>
+                    <h3>Sambusa</h3>
+                    <div class="ethiopian-text">ሳምቡሳ</div>
+                </div>
+                <div>
+                    <p class="price">50 Br</p>
+                    <button class="btn" onclick="addToCart('Sambusa', 50, 'item-sambusa')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-tiramisu">
+                <div>
+                    <h3>Tiramisu</h3>
+                    <div class="ethiopian-text">ቲራሚሱ</div>
+                </div>
+                <div>
+                    <p class="price">150 Br</p>
+                    <button class="btn" onclick="addToCart('Tiramisu', 150, 'item-tiramisu')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-fruit-salad">
+                <div>
+                    <h3>Fruit Salad</h3>
+                    <div class="ethiopian-text">ፍራፍሬ ሰላጣ</div>
+                </div>
+                <div>
+                    <p class="price">200 Br</p>
+                    <button class="btn" onclick="addToCart('Fruit Salad', 200, 'item-fruit-salad')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-eggs">
+                <div>
+                    <h3>5 Boiled Eggs</h3>
+                    <div class="ethiopian-text">5 እንቁላሎች</div>
+                </div>
+                <div>
+                    <p class="price">50 Br</p>
+                    <button class="btn" onclick="addToCart('5 Boiled Eggs', 50, 'item-eggs')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-chips">
+                <div>
+                    <h3>Chips</h3>
+                    <div class="ethiopian-text">ቺፕስ</div>
+                </div>
+                <div>
+                    <p class="price">100 Br</p>
+                    <button class="btn" onclick="addToCart('Chips', 100, 'item-chips')">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRINKS -->
+        <h2 class="section-title">🥤 Drinks</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item-water">
+                <div>
+                    <h3>Water</h3>
+                    <div class="ethiopian-text">ውሃ</div>
+                </div>
+                <div>
+                    <p class="price">40 Br</p>
+                    <button class="btn" onclick="addToCart('Water', 40, 'item-water')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-coke">
+                <div>
+                    <h3>Coca-Cola</h3>
+                    <div class="ethiopian-text">ኮካ ኮላ</div>
+                </div>
+                <div>
+                    <p class="price">60 Br</p>
+                    <button class="btn" onclick="addToCart('Coca-Cola', 60, 'item-coke')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-sprite">
+                <div>
+                    <h3>Sprite</h3>
+                    <div class="ethiopian-text">ስፕራይት</div>
+                </div>
+                <div>
+                    <p class="price">60 Br</p>
+                    <button class="btn" onclick="addToCart('Sprite', 60, 'item-sprite')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-fanta">
+                <div>
+                    <h3>Fanta</h3>
+                    <div class="ethiopian-text">ፋንታ</div>
+                </div>
+                <div>
+                    <p class="price">60 Br</p>
+                    <button class="btn" onclick="addToCart('Fanta', 60, 'item-fanta')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-orange">
+                <div>
+                    <h3>Orange Juice</h3>
+                    <div class="ethiopian-text">ብርቱካን ጭማቂ</div>
+                </div>
+                <div>
+                    <p class="price">120 Br</p>
+                    <button class="btn" onclick="addToCart('Orange Juice', 120, 'item-orange')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-mango">
+                <div>
+                    <h3>Mango Juice</h3>
+                    <div class="ethiopian-text">ማንጎ ጭማቂ</div>
+                </div>
+                <div>
+                    <p class="price">120 Br</p>
+                    <button class="btn" onclick="addToCart('Mango Juice', 120, 'item-mango')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-milkshake">
+                <div>
+                    <h3>Milkshake</h3>
+                    <div class="ethiopian-text">ሚልክሼክ</div>
+                </div>
+                <div>
+                    <p class="price">150 Br</p>
+                    <button class="btn" onclick="addToCart('Milkshake', 150, 'item-milkshake')">Add to Order</button>
+                </div>
+            </div>
+            <div class="menu-item" id="item-oreo">
+                <div>
+                    <h3>Oreo Shake</h3>
+                    <div class="ethiopian-text">ኦሪዮ ሼክ</div>
+                </div>
+                <div>
+                    <p class="price">150 Br</p>
+                    <button class="btn" onclick="addToCart('Oreo Shake', 150, 'item-oreo')">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPECIAL REQUEST -->
+        <div class="custom-box">
+            <h3 style="margin:0; text-transform: uppercase; letter-spacing: 1px;">✨ Craving Something Custom?</h3>
+            <p style="color:#aaa; margin: 5px 0 0 0; font-size:0.95rem;">If you want something custom or have specific instructions, type it below:</p>
+            <textarea id="special-request" placeholder="Ex: Make the Ful extra spicy, or add something completely custom..."></textarea>
+        </div>
+
+        <!-- EXTRA SAUCE BANNER -->
+        <div class="sauce-card-box" id="item-extra-sauce">
+            <p class="sauce-warning">“ORDER THE EXTRA SAUCE, YOUR ABS ARE HIDING ALREADY.”</p>
+            <p style="color: #aaa; margin: 0 0 15px 0; font-size: 1rem;">Signature Secret Street Sauce Bottle</p>
+            <p class="price" style="margin: 5px 0;">30 Br</p>
+            <button class="btn" onclick="addToCart('Extra Sauce Bottle', 30, 'item-extra-sauce')">Add Sauce Bottle to Order</button>
+        </div>
+
+        <!-- CHECKOUT AREA -->
+        <h2 class="section-title" id="checkout-section">🛒 Checkout</h2>
+        <div class="order-box">
+            <div class="cart-summary" id="cart-display">
+                <p style="color: #666; font-style: italic;">Your cart is currently empty. Pick your poison from the menu above!</p>
+            </div>
+            
+            <h3 style="margin-top: 0;">Total Amount: <span id="total-price-display" class="highlight">0 Br</span></h3>
+            <button class="btn btn-block" id="start-checkout-btn" onclick="startCheckout()" style="display:none; background-color: #fff; color: #000;">Submit Order</button>
+
+            <!-- STEP 1 -->
+            <div id="step-1" class="checkout-step">
+                <label style="font-weight: bold;">1. Phone Number for Confirmation</label>
+                <input type="text" id="cust-phone" class="input-field" value="+251">
+                <button class="btn" onclick="validateStep1()">Next Step</button>
+            </div>
+
+            <!-- STEP 2 -->
+            <div id="step-2" class="checkout-step">
+                <label style="font-weight: bold;">2. How are you getting your food?</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="fulfillment" value="pickup" checked onclick="toggleDeliveryField(false)"> Someone gonna pick it up
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="fulfillment" value="delivery" onclick="toggleDeliveryField(true)"> I need it delivered
+                    </label>
+                </div>
+                <div id="delivery-address-container" style="display:none; margin-top:15px;">
+                    <label style="color:#aaa; font-size:0.95rem;">Delivery Address (Optional):</label>
+                    <input type="text" id="cust-address" class="input-field" placeholder="Enter landmark, neighborhood, or house number...">
+                    <span class="delivery-notice">⚠️ Note: Delivery fee is paid directly to the driver on arrival.</span>
+                </div>
+                <button class="btn" onclick="validateStep2()">Next Step</button>
+            </div>
+
+            <!-- STEP 3 & 4 -->
+            <div id="step-3" class="checkout-step">
+                <div id="pickup-code-container" style="display:none;">
+                    <label style="font-weight: bold; color: #aaa;">Your Unique Pickup Code:</label>
+                    <div id="pickup-code" class="code-display">----</div>
+                </div>
+                
+                <label style="font-weight: bold;">3. Select Payment Method & Pay</label>
+                <div class="radio-group" style="margin-bottom: 20px;">
+                    <label class="radio-option">
+                        <input type="radio" name="payment_choice" value="Telebirr" checked> Telebirr
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_choice" value="eBirr"> eBirr
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_choice" value="CBE Transfer"> CBE Bank Transfer
+                    </label>
+                    <label class="radio-option" id="cash-payment-option">
+                        <input type="radio" name="payment_choice" value="Cash on Pickup"> Pay Cash on Pickup
+                    </label>
+                </div>
+
+                <div class="bank-details">
+                    <p style="margin: 5px 0; font-size: 1.1rem;"><strong>Telebirr & eBirr Details:</strong> 0935277358</p>
+                    <p style="margin: 5px 0; font-size: 1.1rem;"><strong>CBE Bank Transfer Details:</strong> 1000283859081</p>
+                </div>
+
+                <label style="font-weight: bold; display:block; margin-top:20px;">4. Upload Receipt Screenshot (Optional)</label>
+                <input type="file" id="payment-screenshot" class="input-field" accept="image/*">
+
+                <button class="btn btn-block" style="margin-top:25px;" onclick="finalizeOrder()">Complete Order</button>
+            </div>
+
+            <!-- TELEGRAM REDIRECT -->
+            <div id="telegram-step" class="checkout-step">
+                <h3 style="color:#0088cc; margin-top:0;">📋 Receipt Ready & Saved!</h3>
+                <p>Your order details have been copied to your clipboard, and a text file backup has been downloaded!</p>
+                <button class="btn btn-block btn-telegram" onclick="redirectToTelegram()">📱 Open Telegram & Send Receipt to @l3wkc74l</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Extended Cinematic Timing for the Intro Presentation
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const overlay = document.getElementById('intro-overlay');
+                overlay.style.opacity = '0';
+                setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+            }, 3800); // Kept on screen longer for dramatic reveal effect
+        });
+
+        function playClickSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(550, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.1);
+            } catch(e) {}
+        }
+
+        let cart = [];
+        let totalAmount = 0;
+        let generatedCode = "";
+        let finalFulfillmentType = "pickup";
+        let didOrderAndCheckout = false;
+        let manifestTextToCopy = "";
+
+        function addToCart(itemName, price, elementId) {
+            playClickSound();
+
+            const el = document.getElementById(elementId);
+            if(el) {
+                el.classList.add('clicked-effect');
+                setTimeout(() => el.classList.remove('clicked-effect'), 150);
+            }
+
+            const uniqueId = Date.now() + Math.random().toString(36).substr(2, 5);
+            cart.push({ id: uniqueId, name: itemName, price: price });
+            updateCartUI();
+        }
+
+        function removeCartItem(uniqueId) {
+            cart = cart.filter(item => item.id !== uniqueId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const display = document.getElementById('cart-display');
+            const totalDisplay = document.getElementById('total-price-display');
+            const checkoutBtn = document.getElementById('start-checkout-btn');
+
+            if(cart.length === 0) {
+                display.innerHTML = `<p style="color: #666; font-style: italic;">Your cart is currently empty. Pick your poison from the menu above!</p>`;
+                totalDisplay.innerText = "0 Br";
+                checkoutBtn.style.display = "none";
+                return;
+            }
+
+            totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+            
+            let html = `<h4 style="margin: 0 0 10px 0; color:#aaa;">Your Selections:</h4>`;
+            cart.forEach(item => {
+                html += `
+                <div class="cart-item-row">
+                    <span>${item.name} (${item.price} Br)</span>
+                    <button class="delete-btn" onclick="removeCartItem('${item.id}')">❌</button>
+                </div>`;
+            });
+            
+            display.innerHTML = html;
+            totalDisplay.innerText = totalAmount + " Br";
+            checkoutBtn.style.display = "block";
+        }
+
+        function startCheckout() {
+            document.getElementById('start-checkout-btn').style.display = "none";
+            document.getElementById('step-1').classList.add('active');
+            document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function validateStep1() {
+            const phone = document.getElementById('cust-phone').value.trim();
+            if(!phone.startsWith("+251") || phone.length < 13) {
+                alert("Please enter your complete phone number starting with the +251 country code.");
+                return;
+            }
+            document.getElementById('step-1').classList.remove('active');
+            document.getElementById('step-2').classList.add('active');
+        }
+
+        function toggleDeliveryField(show) {
+            document.getElementById('delivery-address-container').style.display = show ? "block" : "none";
+            const cashOption = document.getElementById('cash-payment-option');
+            if(show) {
+                cashOption.style.display = "none";
+                const radios = document.getElementsByName('payment_choice');
+                if(radios[3] && radios[3].checked) { radios[0].checked = true; }
+            } else {
+                cashOption.style.display = "flex";
+            }
+        }
+
+        function validateStep2() {
+            const mode = document.querySelector('input[name="fulfillment"]:checked').value;
+            finalFulfillmentType = mode;
+
+            if(mode === "pickup") {
+                generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+                document.getElementById('pickup-code').innerText = generatedCode;
+                document.getElementById('pickup-code-container').style.display = "block";
+            } else {
+                document.getElementById('pickup-code-container').style.display = "none";
+            }
+
+            document.getElementById('step-2').classList.remove('active');
+            document.getElementById('step-3').classList.add('active');
+        }
+
+        function finalizeOrder() {
+            didOrderAndCheckout = true;
+            
+            const phone = document.getElementById('cust-phone').value.trim();
+            const mode = finalFulfillmentType.toUpperCase();
+            const address = document.getElementById('cust-address').value.trim() || "None (Will Call)";
+            const customMsg = document.getElementById('special-request').value.trim() || "None";
+            const paymentMethodSelected = document.querySelector('input[name="payment_choice"]:checked').value;
+            
+            let itemBreakdown = "";
+            cart.forEach(i => itemBreakdown += `- ${i.name} (${i.price} Br)\n`);
+
+            manifestTextToCopy = `============ FOODIE STREET TICKET ============
+TOTAL AMOUNT: ${totalAmount} Br
+PAYMENT METHOD VIA: ${paymentMethodSelected.toUpperCase()}
+METHOD: ${mode}
+${mode === "PICKUP" ? "PICKUP CODE: " + generatedCode : "DELIVERY ADDRESS: " + address}
+PHONE NUMBER: ${phone}
+CUSTOM REQUEST: ${customMsg}
+
+ITEMS ORDERED:
+${itemBreakdown}==============================================`;
+
+            navigator.clipboard.writeText(manifestTextToCopy).catch(() => {});
+
+            const blob = new Blob([manifestTextToCopy], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `FOODIE_ORDER_${phone.slice(-4)}.txt`;
+            link.click();
+
+            document.getElementById('step-3').classList.remove('active');
+            document.getElementById('telegram-step').classList.add('active');
+        }
+
+        function redirectToTelegram() {
+            window.open("https://t.me/l3wkc74l", "_blank");
+            cart = [];
+            updateCartUI();
+            document.getElementById('telegram-step').classList.remove('active');
+            document.getElementById('cust-phone').value = "+251";
+            document.getElementById('cust-address').value = "";
+            document.getElementById('special-request').value = "";
+            document.getElementById('payment-screenshot').value = "";
+        }
+
+        window.addEventListener('beforeunload', function (e) {
+            if (!didOrderAndCheckout && cart.length > 0) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>
